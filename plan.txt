@@ -1,0 +1,38 @@
+fileSystem <-> server -> queueBroker <-workers
+|             |                          | 
+|             User                       |
+|________________________________________|
+
+server
+
+resizeWorker
+
+cropWorker
+
+changeBackGroundWorker
+
+fileSystem
+|
+|-> data => original && modified  
+
+server
+     |-> /operation/image        return id
+     |-> /status/id              return jobDetails(completed/scheduled)
+
+     saveToFileSystem -> /save/location/image                        return fileName
+     pushToQueueBroker -> /jobId/fileName
+     statusFromQueueBroker -> /status/jobId  return jobDetails
+
+fileSystem
+      |-> save /location/image            return fileName
+      |-> get  /location                  return image
+
+queueBroker
+      |-> /status/id  return jobDetails
+      |-> /jobId/fileName return boolean
+
+workers
+      |-> /job-request                    return job/null
+      |-> /get/fileName                   return image
+      |-> /save/location/image            return fileName
+      |-> /completed-job                  return boolean
