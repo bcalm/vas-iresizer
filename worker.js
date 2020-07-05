@@ -7,7 +7,6 @@ const { resizeImage } = require('./lib/resizeImage');
 const getJob = () => {
   return new Promise((resolve, reject) => {
     redisClient.blpop('resize_queue', 1, (err, res) => {
-      console.log(res);
       if (res) resolve(res[1]);
       else reject('no job');
     });
@@ -21,7 +20,7 @@ const runLoop = () => {
         .then((jobDetails) => {
           getImage(jobDetails.file_name)
             .then(resizeImage)
-            .then(saveImage)
+            .then((image) => saveImage(image, jobDetails.file_name))
             .then((fileName) => completeProcessing(redisClient, id, fileName));
         })
         .then(runLoop);
