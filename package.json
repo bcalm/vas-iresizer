@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/bcalm/vas-iresizer/issues"
   },
-  "homepage": "https://github.com/bcalm/vas-iresizer#readme"
+  "homepage": "https://github.com/bcalm/vas-iresizer#readme",
+  "dependencies": {
+    "sharp": "0.25.4"
+  }
 }
