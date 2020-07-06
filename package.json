@@ -4,7 +4,6 @@
   "description": "",
   "main": "connectWithFileSystem.js",
   "scripts": {
-    "start": "node worker.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

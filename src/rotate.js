@@ -1,9 +1,9 @@
 const sharp = require('sharp');
 
-const resizeImage = (image) => {
+const rotate = (image, angle) => {
   return new Promise((resolve, reject) => {
     sharp(image)
-      .resize(200)
+      .rotate(angle)
       .toBuffer()
       .then((data) => {
         resolve(data);
@@ -14,4 +14,4 @@ const resizeImage = (image) => {
   });
 };
 
-module.exports = { resizeImage };
+module.exports = rotate;
