@@ -12,9 +12,9 @@ const runLoop = () => {
         .then((buffer) => saveImage(buffer, fileName))
         .then((resultantFileName) =>
           completeProcessing(redisClient, id, resultantFileName)
-        );
+        )
+        .then(runLoop)
     })
-    .then(runLoop)
     .catch((err) => {
       console.log(`Resizer: ${err}`);
       setTimeout(() => {
