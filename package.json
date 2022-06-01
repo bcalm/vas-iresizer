@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/bcalm/vas-iresizer#readme",
   "dependencies": {
-    "sharp": "0.25.4"
+    "sharp": "0.30.5"
   }
 }
